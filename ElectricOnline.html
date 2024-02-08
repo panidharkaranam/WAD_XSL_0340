@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>electronic_shop</title>
+    <script>
+        function viewData() {
+            var xml = document.getElementById('xmlData').value;
+            var xsl = document.getElementById('xslData').value;
+            var processor = new XSLTProcessor();
+            var xmlDoc = new DOMParser().parseFromString(xml, 'text/xml');
+            var xslDoc = new DOMParser().parseFromString(xsl, 'text/xml');
+            processor.importStylesheet(xslDoc);
+            var result = processor.transformToDocument(xmlDoc);
+            document.getElementById('print').innerHTML = new XMLSerializer().serializeToString(result);
+        }
+    </script>
+</head>
+<body>
+    <h2>Electronic Database</h2>
+    <textarea id="xmlData" style="display:none;"><?xml version="1.0" encoding="UTF-8"?>
+        <electronic_shop>
+            <Application>
+                <id>01</id>
+                <device>Smart Phone</device>
+                <Company>Samsung</Company>
+                <Name>Harry</Name>
+                <Address>Mumbai</Address>
+                <Price>18000</Price>
+            </Application>
+            <Application>
+                <id>02</id>
+                <device>IPhone</device>
+                <Company>Apple</Company>
+                <Name>Naveen</Name>
+                <Address>Vizag</Address>
+                <Price>50000</Price>
+            </Application>
+            <Application>
+                <id>03</id>
+                <device>Wired Earphones</device>
+                <Company>JBL</Company>
+                <Name>Ravi</Name>
+                <Address>Banglore</Address>
+                <Price>800</Price>
+            </Application>
+            <Application>
+                <id>04</id>
+                <device>Airdopes</device>
+                <Company>Oppo</Company>
+                <Name>Sreekar</Name>
+                <Address>Tenali</Address>
+                <Price>2000</Price>
+            </Application>
+            <Application>
+                <id>05</id>
+                <device>Television</device>
+                <Company>L.G</Company>
+                <Name>Sunil</Name>
+                <Address>Kanigiri</Address>
+                <Price>30000</Price>
+            </Application>
+            <Application>
+                <id>06</id>
+                <device>Smart Phone</device>
+                <Company>Motorolla</Company>
+                <Name>Rishi</Name>
+                <Address>Nellore</Address>
+                <Price>19000</Price>
+            </Application>
+            <Application>
+                <id>07</id>
+                <device>Camera</device>
+                <Company>Sony</Company>
+                <Name>Vicky</Name>
+                <Address>Vijayawada</Address>
+                <Price>25000</Price>
+            </Application>
+            <Application>
+                <id>08</id>
+                <device>Head Set</device>
+                <Company>Skull Candy</Company>
+                <Name>Laron</Name>
+                <Address>Vizag</Address>
+                <Price>5000</Price>
+            </Application>
+            <Application>
+                <id>09</id>
+                <device>Home Theatre</device>
+                <Company>Zebronics</Company>
+                <Name>Aishwarya</Name>
+                <Address>Vijayawada</Address>
+                <Price>30000</Price>
+            </Application>
+            <Application>
+                <id>10</id>
+                <device>Wireless Earphones</device>
+                <Company>ptron</Company>
+                <Name>Harsha</Name>
+                <Address>proddutur</Address>
+                <Price>400</Price>
+            </Application>
+            <Application>
+                <id>11</id>
+                <device>Play Station 1</device>
+                <Company>Sony</Company>
+                <Name>Jenny</Name>
+                <Address>Hyderabad</Address>
+                <Price>10000</Price>
+            </Application>
+            <Application>
+                <id>12</id>
+                <device>Play Station 2</device>
+                <Company>Sony</Company>
+                <Name>Radha</Name>
+                <Address>Tirupati</Address>
+                <Price>17000</Price>
+            </Application>
+            <Application>
+                <id>13</id>
+                <device>Play Station 3</device>
+                <Company>Samsung</Company>
+                <Name>Hari</Name>
+                <Address>Mumbai</Address>
+                <Price>28000</Price>
+            </Application>
+            <Application>
+                <id>14</id>
+                <device>Play Station 4</device>
+                <Company>Samsung</Company>
+                <Name>Dev</Name>
+                <Address>Chirala</Address>
+                <Price>39000</Price>
+            </Application>
+            <Application>
+                <id>15</id>
+                <device>Play Station 5</device>
+                <Company>Sony</Company>
+                <Name>Vinay</Name>
+                <Address>Bapatla</Address>
+                <Price>49999</Price>
+            </Application>
+            <Application>
+                <id>16</id>
+                <device>XBox 360</device>
+                <Company>XBox</Company>
+                <Name>Siva</Name>
+                <Address>Chittur</Address>
+                <Price>39500</Price>
+            </Application>
+            <Application>
+                <id>17</id>
+                <device>VR Headset</device>
+                <Company>Sony</Company>
+                <Name>Siri</Name>
+                <Address>Ongole</Address>
+                <Price>7000</Price>
+            </Application>
+            <Application>
+                <id>18</id>
+                <device>Laptop</device>
+                <Company>Acer</Company>
+                <Name>Aruna</Name>
+                <Address>Hyderabad</Address>
+                <Price>70000</Price>
+            </Application>
+            <Application>
+                <id>19</id>
+                <device>Desktop</device>
+                <Company>Dell</Company>
+                <Name>bhargav</Name>
+                <Address>Elluru</Address>
+                <Price>15000</Price>
+            </Application>
+            <Application>
+                <id>20</id>
+                <device>RTX 4090 Graphic Card</device>
+                <Company>Asus</Company>
+                <Name>Phani</Name>
+                <Address>Vijayawada</Address>
+                <Price>250000</Price>
+            </Application>
+        </electronic_shop>
+</textarea>
+    <textarea id="xslData" style="display:none;"><?xml version="1.0" encoding="UTF-8"?>
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    <xsl:template match="/">
+        <html>
+            <body>
+                <table border= "1" style="border:solid" >
+                    <tr>
+                        <th>ID</th>
+                        <th>Device</th>
+                        <th>Company</th>
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>price</th>
+                    </tr>
+                    <xsl:for-each select="electronic_shop/Application">
+                        <tr>
+                            <td><xsl:value-of select="id"/></td>
+                            <td><xsl:value-of select="device"/></td>
+                            <td><xsl:value-of select="Company"/></td>
+                            <td><xsl:value-of select="Name"/></td>
+                            <td><xsl:value-of select="Address"/></td>
+                            <td><xsl:value-of select="Price"/></td>
+                        </tr>
+                    </xsl:for-each>
+                </table>
+            </body>
+        </html>
+    </xsl:template>
+</xsl:stylesheet>
+</textarea>
+    <button onclick="viewData()">View Data</button>
+    <div id="print"></div>
+</body>
+</html>
